@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   ComposableMap,
   Geographies,
@@ -20,16 +20,50 @@ interface GlobalMapProps {
 export default function GlobalMap({ activeFilter }: GlobalMapProps) {
   const [tooltipContent, setTooltipContent] = useState('');
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const [scale, setScale] = useState(160);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // 根据类型获取标注点大小
+  // 响应式缩放：根据容器宽度调整地图缩放比例
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.clientWidth;
+        // 基础 scale 为 160 (对应 800px 宽度)
+        // 小屏幕上增大 scale，让地图内容更大
+        if (width < 640) {
+          // 小屏幕：显著放大
+          setScale(220);
+        } else if (width < 768) {
+          // 中等屏幕
+          setScale(200);
+        } else if (width < 1024) {
+          // 平板
+          setScale(180);
+        } else {
+          // 桌面
+          setScale(160);
+        }
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
+
+  // 根据类型和屏幕尺寸获取标注点大小
   const getMarkerSize = (type: Location['type']) => {
+    // 小屏幕上使用更大的标记点
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const baseMultiplier = isMobile ? 1.8 : 1;
+    
     switch (type) {
       case 'rd':
-        return 5;
+        return 5 * baseMultiplier;
       case 'business':
-        return 4.5;
+        return 4.5 * baseMultiplier;
       default:
-        return 4;
+        return 4 * baseMultiplier;
     }
   };
 
@@ -39,11 +73,11 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
     : allLocations.filter(loc => loc.type === activeFilter);
 
   return (
-    <div className="w-full h-full bg-gradient-to-b from-slate-50 to-slate-100">
+    <div ref={containerRef} className="w-full h-full bg-gradient-to-b from-slate-100 to-slate-200">
       <ComposableMap
         projection="geoNaturalEarth1"
         projectionConfig={{
-          scale: 160,
+          scale: scale,
           center: [10, 10],
         }}
         width={800}
@@ -75,7 +109,6 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
         {filteredLocations.map((location) => {
           const size = getMarkerSize(location.type);
           const color = colors[location.type];
-          // 使用 name + type 作为唯一 key
           const key = `${location.name}-${location.type}`;
           const isHovered = hoveredKey === key;
 

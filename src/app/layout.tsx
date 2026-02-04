@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import { Oswald } from "next/font/google";
 import "./globals.css";
 
-// IBM Plex Sans 支持中文
-const ibmPlexSans = IBM_Plex_Sans({
+// Oswald 类似 D-DIN 风格，用于数字
+const oswald = Oswald({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-ibm-plex-sans',
+  variable: '--font-oswald',
 });
 
 export const metadata: Metadata = {
@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className={`${ibmPlexSans.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className={`${oswald.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

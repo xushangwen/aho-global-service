@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* 顶部标题区 - 绝对定位在顶部 */}
       <header className="absolute top-0 left-0 right-0 z-10 pt-8 md:pt-12 px-4 text-center">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 drop-shadow-sm">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 drop-shadow-sm" style={{ fontWeight: 700 }}>
           我们的全球服务
         </h1>
         <p className="text-sm md:text-base text-gray-600 drop-shadow-sm max-w-xl mx-auto">
@@ -40,25 +40,25 @@ export default function Home() {
       </header>
 
       {/* 底部控制区 - 绝对定位在底部，宽度自适应不遮挡地图 */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pb-6 md:pb-10 px-4 pointer-events-none w-auto max-w-full">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pb-4 sm:pb-6 md:pb-10 px-2 sm:px-4 pointer-events-none w-auto max-w-full">
         {/* 图例筛选 */}
         <div className="pointer-events-auto">
           <Legend activeFilter={activeFilter} onFilterChange={setActiveFilter} />
         </div>
 
         {/* 统计卡片 - 增强毛玻璃 */}
-        <section className="mt-4 md:mt-6 flex justify-center gap-3 md:gap-4">
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
-            <div className="text-2xl md:text-4xl font-bold text-[#FF6400]">26+</div>
-            <div className="text-sm md:text-base text-gray-600 mt-1">服务国家/地区</div>
+        <section className="mt-3 sm:mt-4 md:mt-6 flex justify-center gap-2 sm:gap-3 md:gap-4">
+          <div className="pointer-events-auto text-center px-3 sm:px-6 py-2 sm:py-4 md:px-8 md:py-6 bg-white/40 rounded-xl sm:rounded-2xl border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:bg-white/50 transition-all duration-300" style={{backdropFilter: 'blur(4px) saturate(180%)', WebkitBackdropFilter: 'blur(4px) saturate(180%)'}}>
+            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold font-number text-[#FF6400]">26+</div>
+            <div className="text-xs sm:text-sm md:text-base text-gray-600 mt-0.5 sm:mt-1">服务国家/地区</div>
           </div>
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
-            <div className="text-2xl md:text-4xl font-bold text-[#1E3296]">5</div>
-            <div className="text-sm md:text-base text-gray-600 mt-1">全球业务中心</div>
+          <div className="pointer-events-auto text-center px-3 sm:px-6 py-2 sm:py-4 md:px-8 md:py-6 bg-white/40 rounded-xl sm:rounded-2xl border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:bg-white/50 transition-all duration-300" style={{backdropFilter: 'blur(4px) saturate(180%)', WebkitBackdropFilter: 'blur(4px) saturate(180%)'}}>
+            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold font-number text-[#1E3296]">5</div>
+            <div className="text-xs sm:text-sm md:text-base text-gray-600 mt-0.5 sm:mt-1">全球业务中心</div>
           </div>
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
-            <div className="text-2xl md:text-4xl font-bold text-[#FFB432]">3</div>
-            <div className="text-sm md:text-base text-gray-600 mt-1">研发制造基地</div>
+          <div className="pointer-events-auto text-center px-3 sm:px-6 py-2 sm:py-4 md:px-8 md:py-6 bg-white/40 rounded-xl sm:rounded-2xl border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:bg-white/50 transition-all duration-300" style={{backdropFilter: 'blur(4px) saturate(180%)', WebkitBackdropFilter: 'blur(4px) saturate(180%)'}}>
+            <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold font-number text-[#FFB432]">3</div>
+            <div className="text-xs sm:text-sm md:text-base text-gray-600 mt-0.5 sm:mt-1">研发制造基地</div>
           </div>
         </section>
       </div>

@@ -4,8 +4,8 @@ import { colors } from '@/data/locations';
 
 // 毛玻璃效果样式
 const glassStyle = {
-  backdropFilter: 'blur(8px) saturate(180%)',
-  WebkitBackdropFilter: 'blur(8px) saturate(180%)',
+  backdropFilter: 'blur(4px) saturate(180%)',
+  WebkitBackdropFilter: 'blur(4px) saturate(180%)',
 } as const;
 
 type FilterType = 'all' | 'customer' | 'business' | 'rd';
@@ -32,26 +32,26 @@ interface LegendProps {
 
 export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
       {/* 全部按钮 */}
       <button
         onClick={() => onFilterChange('all')}
         className={`
-          flex items-center gap-2 px-4 py-2.5 rounded-xl
+          flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl
           border transition-all duration-300
           ${activeFilter === 'all'
-            ? 'bg-gray-50/[0.08] border-white/50 shadow-xl scale-105'
-            : 'bg-gray-50/[0.04] border-white/40 hover:bg-gray-50/[0.08] hover:shadow-lg'
+            ? 'bg-white/40 border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.08)] scale-105'
+            : 'bg-white/30 border-white/50 hover:bg-white/40 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]'
           }
         `}
         style={glassStyle}
       >
         {/* 使用 grid icon 代替渐变色点 */}
-        <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
           <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
         </svg>
-        <span className="text-xs md:text-sm text-gray-700 font-medium">全部</span>
-        <span className="text-xs text-gray-500 font-normal">33</span>
+        <span className="text-[10px] sm:text-xs md:text-sm text-gray-700 font-medium">全部</span>
+        <span className="text-[10px] sm:text-xs text-gray-500 font-normal">33</span>
       </button>
 
       {/* 分类按钮 */}
@@ -60,26 +60,26 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
           key={item.type}
           onClick={() => onFilterChange(item.type)}
           className={`
-            flex items-center gap-2 px-4 py-2.5 rounded-xl
+            flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl
             border transition-all duration-300
             ${activeFilter === item.type
-              ? 'bg-gray-50/[0.08] border-white/50 shadow-xl scale-105'
-              : 'bg-gray-50/[0.04] border-white/40 hover:bg-gray-50/[0.08] hover:shadow-lg'
+              ? 'bg-white/40 border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.08)] scale-105'
+              : 'bg-white/30 border-white/50 hover:bg-white/40 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]'
             }
           `}
           style={glassStyle}
         >
           <span
-            className="w-3 h-3 rounded-full shrink-0"
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full shrink-0"
             style={{
               backgroundColor: item.color,
               boxShadow: `0 0 8px ${item.color}50`
             }}
           />
-          <span className="text-xs md:text-sm text-gray-700 font-medium">
+          <span className="text-[10px] sm:text-xs md:text-sm text-gray-700 font-medium">
             {item.label}
           </span>
-          <span className="text-xs text-gray-500 font-normal">{item.count}</span>
+          <span className="text-[10px] sm:text-xs text-gray-500 font-normal">{item.count}</span>
         </button>
       ))}
     </div>
