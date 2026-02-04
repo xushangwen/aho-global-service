@@ -48,15 +48,15 @@ export default function Home() {
 
         {/* 统计卡片 - 增强毛玻璃 */}
         <section className="mt-4 md:mt-6 flex justify-center gap-3 md:gap-4">
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/[0.04] rounded-2xl border border-white/50 shadow-lg hover:bg-white/[0.08] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
             <div className="text-2xl md:text-4xl font-bold text-[#FF6400]">26+</div>
             <div className="text-sm md:text-base text-gray-600 mt-1">服务国家/地区</div>
           </div>
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/[0.04] rounded-2xl border border-white/50 shadow-lg hover:bg-white/[0.08] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
             <div className="text-2xl md:text-4xl font-bold text-[#1E3296]">5</div>
             <div className="text-sm md:text-base text-gray-600 mt-1">全球业务中心</div>
           </div>
-          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/[0.04] rounded-2xl border border-white/50 shadow-lg hover:bg-white/[0.08] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-gray-50/[0.06] rounded-2xl border border-white/50 shadow-lg hover:bg-gray-50/[0.12] transition-all duration-300" style={{backdropFilter: 'blur(8px) saturate(180%)', WebkitBackdropFilter: 'blur(8px) saturate(180%)'}}>
             <div className="text-2xl md:text-4xl font-bold text-[#FFB432]">3</div>
             <div className="text-sm md:text-base text-gray-600 mt-1">研发制造基地</div>
           </div>

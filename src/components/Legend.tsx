@@ -40,8 +40,8 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
           flex items-center gap-2 px-4 py-2.5 rounded-xl
           border transition-all duration-300
           ${activeFilter === 'all'
-            ? 'bg-white/[0.04] border-white/50 shadow-xl scale-105'
-            : 'bg-white/[0.02] border-white/40 hover:bg-white/[0.04] hover:shadow-lg'
+            ? 'bg-gray-50/[0.08] border-white/50 shadow-xl scale-105'
+            : 'bg-gray-50/[0.04] border-white/40 hover:bg-gray-50/[0.08] hover:shadow-lg'
           }
         `}
         style={glassStyle}
@@ -63,8 +63,8 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
             flex items-center gap-2 px-4 py-2.5 rounded-xl
             border transition-all duration-300
             ${activeFilter === item.type
-              ? 'bg-white/[0.04] border-white/50 shadow-xl scale-105'
-              : 'bg-white/[0.02] border-white/40 hover:bg-white/[0.04] hover:shadow-lg'
+              ? 'bg-gray-50/[0.08] border-white/50 shadow-xl scale-105'
+              : 'bg-gray-50/[0.04] border-white/40 hover:bg-gray-50/[0.08] hover:shadow-lg'
             }
           `}
           style={glassStyle}
