@@ -24,44 +24,43 @@ export default function Home() {
 
   return (
     <main className="relative h-screen overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100">
-      {/* 地图背景层 */}
-      <div className="absolute inset-0 z-0">
+      {/* 地图背景层 - 全屏显示，需要能接收鼠标事件 */}
+      <div className="absolute inset-0">
         <GlobalMap activeFilter={activeFilter} />
       </div>
 
-      {/* 内容层 */}
-      <div className="relative z-10 h-full flex flex-col justify-between pointer-events-none">
-        {/* 顶部标题区 - 无卡片 */}
-        <header className="pt-8 md:pt-12 px-4 text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 drop-shadow-sm">
-            我们的全球服务
-          </h1>
-          <p className="text-sm md:text-base text-gray-600 drop-shadow-sm max-w-xl mx-auto">
-            澳弘电子与全球领先企业深度合作，推动科技创新与行业发展
-          </p>
-        </header>
+      {/* 顶部标题区 - 绝对定位在顶部 */}
+      <header className="absolute top-0 left-0 right-0 z-10 pt-8 md:pt-12 px-4 text-center">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 drop-shadow-sm">
+          我们的全球服务
+        </h1>
+        <p className="text-sm md:text-base text-gray-600 drop-shadow-sm max-w-xl mx-auto">
+          澳弘电子与全球领先企业深度合作，推动科技创新与行业发展
+        </p>
+      </header>
 
-        {/* 底部控制区 */}
-        <div className="pb-6 md:pb-10 px-4 pointer-events-auto">
-          {/* 图例筛选 */}
+      {/* 底部控制区 - 绝对定位在底部，宽度自适应不遮挡地图 */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pb-6 md:pb-10 px-4 pointer-events-none w-auto max-w-full">
+        {/* 图例筛选 */}
+        <div className="pointer-events-auto">
           <Legend activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-
-          {/* 统计卡片 - 增强毛玻璃 */}
-          <section className="mt-4 md:mt-6 flex justify-center gap-3 md:gap-4">
-            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-2xl md:text-4xl font-bold text-[#FF6400]">26+</div>
-              <div className="text-sm md:text-base text-gray-600 mt-1">服务国家/地区</div>
-            </div>
-            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-2xl md:text-4xl font-bold text-[#1E3296]">5</div>
-              <div className="text-sm md:text-base text-gray-600 mt-1">全球业务中心</div>
-            </div>
-            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-2xl md:text-4xl font-bold text-[#FFB432]">3</div>
-              <div className="text-sm md:text-base text-gray-600 mt-1">研发制造基地</div>
-            </div>
-          </section>
         </div>
+
+        {/* 统计卡片 - 增强毛玻璃 */}
+        <section className="mt-4 md:mt-6 flex justify-center gap-3 md:gap-4">
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+            <div className="text-2xl md:text-4xl font-bold text-[#FF6400]">26+</div>
+            <div className="text-sm md:text-base text-gray-600 mt-1">服务国家/地区</div>
+          </div>
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+            <div className="text-2xl md:text-4xl font-bold text-[#1E3296]">5</div>
+            <div className="text-sm md:text-base text-gray-600 mt-1">全球业务中心</div>
+          </div>
+          <div className="pointer-events-auto text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+            <div className="text-2xl md:text-4xl font-bold text-[#FFB432]">3</div>
+            <div className="text-sm md:text-base text-gray-600 mt-1">研发制造基地</div>
+          </div>
+        </section>
       </div>
     </main>
   );
