@@ -36,3 +36,16 @@ body {
 .pulse-circle {
   animation: pulse-ring 1.2s ease-out infinite;
 }
+
+/* 禁用 SVG 元素的点击外框 */
+svg * {
+  outline: none !important;
+}
+
+svg *:focus {
+  outline: none !important;
+}
+
+svg *:active {
+  outline: none !important;
+}
