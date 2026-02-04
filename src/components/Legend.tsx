@@ -2,6 +2,12 @@
 
 import { colors } from '@/data/locations';
 
+// 毛玻璃效果样式
+const glassStyle = {
+  backdropFilter: 'blur(8px) saturate(180%)',
+  WebkitBackdropFilter: 'blur(8px) saturate(180%)',
+} as const;
+
 type FilterType = 'all' | 'customer' | 'business' | 'rd';
 
 interface LegendItem {
@@ -32,12 +38,13 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
         onClick={() => onFilterChange('all')}
         className={`
           flex items-center gap-2 px-4 py-2.5 rounded-xl
-          backdrop-blur-xl border transition-all duration-300
+          border transition-all duration-300
           ${activeFilter === 'all'
-            ? 'bg-white/40 border-white/60 shadow-xl scale-105'
-            : 'bg-white/25 border-white/40 hover:bg-white/35 hover:shadow-lg'
+            ? 'bg-white/[0.04] border-white/50 shadow-xl scale-105'
+            : 'bg-white/[0.02] border-white/40 hover:bg-white/[0.04] hover:shadow-lg'
           }
         `}
+        style={glassStyle}
       >
         {/* 使用 grid icon 代替渐变色点 */}
         <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
@@ -54,12 +61,13 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
           onClick={() => onFilterChange(item.type)}
           className={`
             flex items-center gap-2 px-4 py-2.5 rounded-xl
-            backdrop-blur-xl border transition-all duration-300
+            border transition-all duration-300
             ${activeFilter === item.type
-              ? 'bg-white/40 border-white/60 shadow-xl scale-105'
-              : 'bg-white/25 border-white/40 hover:bg-white/35 hover:shadow-lg'
+              ? 'bg-white/[0.04] border-white/50 shadow-xl scale-105'
+              : 'bg-white/[0.02] border-white/40 hover:bg-white/[0.04] hover:shadow-lg'
             }
           `}
+          style={glassStyle}
         >
           <span
             className="w-3 h-3 rounded-full shrink-0"
