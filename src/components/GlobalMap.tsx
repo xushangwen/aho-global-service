@@ -19,6 +19,7 @@ interface GlobalMapProps {
 
 export default function GlobalMap({ activeFilter }: GlobalMapProps) {
   const [tooltipContent, setTooltipContent] = useState('');
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // 根据类型获取标注点大小
   const getMarkerSize = (type: Location['type']) => {
@@ -39,6 +40,23 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
 
   return (
     <div className="w-full h-full bg-gradient-to-b from-slate-50 to-slate-100">
+      {/* 脉冲动画样式 */}
+      <style jsx global>{`
+        @keyframes pulse-ring {
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+        .pulse-ring {
+          animation: pulse-ring 1.5s ease-out infinite;
+        }
+      `}</style>
+
       <ComposableMap
         projection="geoNaturalEarth1"
         projectionConfig={{
@@ -71,26 +89,52 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
         </Geographies>
 
         {/* 渲染标注点 */}
-        {filteredLocations.map((location, index) => (
-          <Marker
-            key={`${location.type}-${index}`}
-            coordinates={location.coordinates}
-            onMouseEnter={() => setTooltipContent(location.name)}
-            onMouseLeave={() => setTooltipContent('')}
-            data-tooltip-id="map-tooltip"
-          >
-            <circle
-              r={getMarkerSize(location.type)}
-              fill={colors[location.type]}
-              stroke="#fff"
-              strokeWidth={1.5}
-              className="cursor-pointer transition-all duration-300 hover:scale-150"
-              style={{
-                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+        {filteredLocations.map((location, index) => {
+          const size = getMarkerSize(location.type);
+          const isHovered = hoveredIndex === index;
+          const color = colors[location.type];
+
+          return (
+            <Marker
+              key={`${location.type}-${index}`}
+              coordinates={location.coordinates}
+              onMouseEnter={() => {
+                setTooltipContent(location.name);
+                setHoveredIndex(index);
               }}
-            />
-          </Marker>
-        ))}
+              onMouseLeave={() => {
+                setTooltipContent('');
+                setHoveredIndex(null);
+              }}
+              data-tooltip-id="map-tooltip"
+            >
+              {/* 脉冲光晕 - 悬停时显示 */}
+              {isHovered && (
+                <circle
+                  r={size}
+                  fill={color}
+                  opacity={0.6}
+                  className="pulse-ring"
+                  style={{ transformOrigin: 'center' }}
+                />
+              )}
+              {/* 主标注点 */}
+              <circle
+                r={isHovered ? size * 1.3 : size}
+                fill={color}
+                stroke="#fff"
+                strokeWidth={1.5}
+                className="cursor-pointer"
+                style={{
+                  filter: isHovered
+                    ? `drop-shadow(0 0 8px ${color})`
+                    : 'drop-shadow(0 1px 2px rgba(0,0,0,0.2))',
+                  transition: 'all 0.2s ease-out',
+                }}
+              />
+            </Marker>
+          );
+        })}
       </ComposableMap>
 
       {/* 提示框 - 毛玻璃效果 */}
