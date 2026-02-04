@@ -5,7 +5,7 @@ export interface Location {
   type: 'customer' | 'business' | 'rd';
 }
 
-// 全球客户 - 橙色 #FF6400 (23个)
+// 全球客户 - 橙色 #FF6400 (26个)
 export const customers: Location[] = [
   // 欧洲
   { name: '英国', coordinates: [-1.5, 52.5], type: 'customer' },
@@ -17,6 +17,7 @@ export const customers: Location[] = [
   { name: '斯洛文尼亚', coordinates: [14.8, 46.1], type: 'customer' },
   { name: '斯洛伐克', coordinates: [19.7, 48.7], type: 'customer' },
   { name: '意大利', coordinates: [12.5, 42.5], type: 'customer' },
+  { name: '罗马尼亚', coordinates: [25.0, 44.4], type: 'customer' },
   // 中东/非洲
   { name: '土耳其', coordinates: [32.9, 39.9], type: 'customer' },
   { name: '突尼斯', coordinates: [9.5, 34.0], type: 'customer' },
@@ -30,6 +31,8 @@ export const customers: Location[] = [
   { name: '越南', coordinates: [108.3, 16.0], type: 'customer' },
   { name: '马来西亚', coordinates: [101.7, 3.1], type: 'customer' },
   { name: '印度尼西亚', coordinates: [117.0, -2.5], type: 'customer' },
+  { name: '菲律宾', coordinates: [120.9, 14.6], type: 'customer' },
+  { name: '台湾', coordinates: [121.5, 25.0], type: 'customer' },
   // 美洲
   { name: '美国', coordinates: [-95.7, 37.1], type: 'customer' },
   { name: '墨西哥', coordinates: [-102.5, 23.6], type: 'customer' },

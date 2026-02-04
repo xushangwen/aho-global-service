@@ -12,12 +12,12 @@ interface LegendItem {
 }
 
 const legendItems: LegendItem[] = [
-  { type: 'customer', color: colors.customer, label: '全球客户', count: 23 },
+  { type: 'customer', color: colors.customer, label: '全球客户', count: 26 },
   { type: 'business', color: colors.business, label: '全球业务中心', count: 5 },
-  { type: 'rd', color: colors.rd, label: '研发制造基地', count: 2 },
+  { type: 'rd', color: colors.rd, label: '研发制造基地', count: 3 },
 ];
 
-// 总数: 23 + 5 + 2 = 30
+// 总数: 26 + 5 + 3 = 34
 
 interface LegendProps {
   activeFilter: FilterType;
@@ -44,7 +44,7 @@ export default function Legend({ activeFilter, onFilterChange }: LegendProps) {
           <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
         </svg>
         <span className="text-xs md:text-sm text-gray-700 font-medium">全部</span>
-        <span className="text-xs text-gray-500 font-normal">30</span>
+        <span className="text-xs text-gray-500 font-normal">33</span>
       </button>
 
       {/* 分类按钮 */}

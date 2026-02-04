@@ -48,17 +48,17 @@ export default function Home() {
 
           {/* 统计卡片 - 增强毛玻璃 */}
           <section className="mt-4 md:mt-6 flex justify-center gap-3 md:gap-4">
-            <div className="text-center px-5 py-3 md:px-6 md:py-4 bg-white/25 backdrop-blur-xl rounded-xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-lg md:text-2xl font-bold text-[#FF6400]">22+</div>
-              <div className="text-xs text-gray-600">服务国家/地区</div>
+            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+              <div className="text-2xl md:text-4xl font-bold text-[#FF6400]">26+</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">服务国家/地区</div>
             </div>
-            <div className="text-center px-5 py-3 md:px-6 md:py-4 bg-white/25 backdrop-blur-xl rounded-xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-lg md:text-2xl font-bold text-[#1E3296]">5</div>
-              <div className="text-xs text-gray-600">全球业务中心</div>
+            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+              <div className="text-2xl md:text-4xl font-bold text-[#1E3296]">5</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">全球业务中心</div>
             </div>
-            <div className="text-center px-5 py-3 md:px-6 md:py-4 bg-white/25 backdrop-blur-xl rounded-xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
-              <div className="text-lg md:text-2xl font-bold text-[#FFB432]">2</div>
-              <div className="text-xs text-gray-600">研发制造基地</div>
+            <div className="text-center px-6 py-4 md:px-8 md:py-6 bg-white/25 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg hover:bg-white/35 transition-all duration-300">
+              <div className="text-2xl md:text-4xl font-bold text-[#FFB432]">3</div>
+              <div className="text-sm md:text-base text-gray-600 mt-1">研发制造基地</div>
             </div>
           </section>
         </div>

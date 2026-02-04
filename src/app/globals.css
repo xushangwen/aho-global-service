@@ -16,15 +16,18 @@ body {
   color: var(--foreground);
 }
 
-/* 地图标注点响应式大小 */
-@media (max-width: 768px) {
-  .rsm-marker circle {
+/* 脉冲动画 */
+@keyframes pulse-ring {
+  0% {
     r: 4;
+    opacity: 0.8;
+  }
+  100% {
+    r: 16;
+    opacity: 0;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .rsm-marker circle {
-    r: 5;
-  }
+.pulse-circle {
+  animation: pulse-ring 1.2s ease-out infinite;
 }

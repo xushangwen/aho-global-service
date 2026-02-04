@@ -19,7 +19,7 @@ interface GlobalMapProps {
 
 export default function GlobalMap({ activeFilter }: GlobalMapProps) {
   const [tooltipContent, setTooltipContent] = useState('');
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   // 根据类型获取标注点大小
   const getMarkerSize = (type: Location['type']) => {
@@ -40,23 +40,6 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
 
   return (
     <div className="w-full h-full bg-gradient-to-b from-slate-50 to-slate-100">
-      {/* 脉冲动画样式 */}
-      <style jsx global>{`
-        @keyframes pulse-ring {
-          0% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          100% {
-            transform: scale(2.5);
-            opacity: 0;
-          }
-        }
-        .pulse-ring {
-          animation: pulse-ring 1.5s ease-out infinite;
-        }
-      `}</style>
-
       <ComposableMap
         projection="geoNaturalEarth1"
         projectionConfig={{
@@ -89,22 +72,24 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
         </Geographies>
 
         {/* 渲染标注点 */}
-        {filteredLocations.map((location, index) => {
+        {filteredLocations.map((location) => {
           const size = getMarkerSize(location.type);
-          const isHovered = hoveredIndex === index;
           const color = colors[location.type];
+          // 使用 name + type 作为唯一 key
+          const key = `${location.name}-${location.type}`;
+          const isHovered = hoveredKey === key;
 
           return (
             <Marker
-              key={`${location.type}-${index}`}
+              key={key}
               coordinates={location.coordinates}
               onMouseEnter={() => {
                 setTooltipContent(location.name);
-                setHoveredIndex(index);
+                setHoveredKey(key);
               }}
               onMouseLeave={() => {
                 setTooltipContent('');
-                setHoveredIndex(null);
+                setHoveredKey(null);
               }}
               data-tooltip-id="map-tooltip"
             >
@@ -112,24 +97,24 @@ export default function GlobalMap({ activeFilter }: GlobalMapProps) {
               {isHovered && (
                 <circle
                   r={size}
-                  fill={color}
-                  opacity={0.6}
-                  className="pulse-ring"
-                  style={{ transformOrigin: 'center' }}
+                  fill="none"
+                  stroke={color}
+                  strokeWidth={2}
+                  className="pulse-circle"
                 />
               )}
               {/* 主标注点 */}
               <circle
-                r={isHovered ? size * 1.3 : size}
+                r={isHovered ? size * 1.4 : size}
                 fill={color}
                 stroke="#fff"
                 strokeWidth={1.5}
                 className="cursor-pointer"
                 style={{
                   filter: isHovered
-                    ? `drop-shadow(0 0 8px ${color})`
-                    : 'drop-shadow(0 1px 2px rgba(0,0,0,0.2))',
-                  transition: 'all 0.2s ease-out',
+                    ? `drop-shadow(0 0 6px ${color})`
+                    : 'drop-shadow(0 1px 2px rgba(0,0,0,0.15))',
+                  transition: 'r 0.15s ease-out, filter 0.15s ease-out',
                 }}
               />
             </Marker>
